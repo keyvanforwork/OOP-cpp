@@ -57,6 +57,38 @@ public:
     }
 };
 
+class Developer : public Employee {
+private:
+    std::string FavProgrammingLanguage;
+    int Experience {};
+public:
+    void setFav(std::string favLang) {
+        FavProgrammingLanguage = favLang;
+    }
+
+    std::string getFav() {
+        return FavProgrammingLanguage;
+    };
+
+    void setExp(int experience) {
+        Experience = experience;
+    }
+
+    int getExp() {
+        return Experience;
+    };
+
+    Developer(std::string name, std::string company, int age, std::string favLang, int experience)
+        : Employee(name, company, age)
+    {
+        FavProgrammingLanguage = favLang;
+        Experience = experience;
+    }
+    void FixBug() {
+        std::cout << getName() << " Fix bugs with using " << FavProgrammingLanguage << '\n';
+    }
+};
+
 int main() {
     Employee em1 = Employee("Mitra", "Yahoo", 36);
 //    em1.Name = "Mitra";
@@ -73,8 +105,14 @@ int main() {
     em2.setAge(12);
     std::cout << "Change: \n" << "company - " << em2.getCompany() << '\n' << "age - " << em2.getAge() << '\n';
     em2.IntroduceYourself();
+
+    Developer dev1 = Developer("Alex", "Google", 46, "C++", 17);
+    dev1.IntroduceYourself();
+    dev1.FixBug();
+
     std::cout << "Promotion: \n";
     em1.EmployeePromotion();
     em2.EmployeePromotion();
+    dev1.EmployeePromotion();
     return 0;
 }
