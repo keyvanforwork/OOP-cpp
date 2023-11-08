@@ -85,7 +85,39 @@ public:
         Experience = experience;
     }
     void FixBug() {
-        std::cout << getName() << " Fix bugs with using " << FavProgrammingLanguage << '\n';
+        std::cout << getName() << " Fixing bugs with using " << FavProgrammingLanguage << " for " << Experience << " years \n";
+    }
+};
+
+class Teacher : public Employee {
+private:
+    std::string Subject;
+    int Experience {};
+public:
+    void setSub(std::string subject) {
+        Subject = subject;
+    }
+
+    std::string getSub() {
+        return Subject;
+    };
+
+    void setExp(int experience) {
+        Experience = experience;
+    }
+
+    int getExp() {
+        return Experience;
+    };
+
+    Teacher(std::string name, std::string company, int age, std::string subject, int experience)
+            : Employee(name, company, age)
+    {
+        Subject = subject;
+        Experience = experience;
+    }
+    void TeachLesson() {
+        std::cout << getName() << " teaching the " << Subject << " for " << Experience << " years \n";
     }
 };
 
@@ -110,9 +142,15 @@ int main() {
     dev1.IntroduceYourself();
     dev1.FixBug();
 
-    std::cout << "Promotion: \n";
+    Teacher tech1 = Teacher("Selena", "High school", 27, "Math", 2);
+    tech1.IntroduceYourself();
+    tech1.TeachLesson();
+
+    std::cout << "Promotions: \n";
     em1.EmployeePromotion();
     em2.EmployeePromotion();
     dev1.EmployeePromotion();
+    tech1.EmployeePromotion();
+
     return 0;
 }
