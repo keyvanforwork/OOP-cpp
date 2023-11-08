@@ -55,6 +55,10 @@ public:
         else
             std::cout << Name << "  sorry for age" << '\n';
     }
+
+    virtual void Work() {
+        std::cout << getName() << " tasks are available \n";
+    }
 };
 
 class Developer : public Employee {
@@ -85,7 +89,11 @@ public:
         Experience = experience;
     }
     void FixBug() {
-        std::cout << getName() << " Fixing bugs with using " << FavProgrammingLanguage << " for " << Experience << " years \n";
+        std::cout << getName() << " is Fixing bugs with using " << FavProgrammingLanguage << " for " << Experience << " years \n";
+    }
+
+    void Work() {
+        std::cout << getName() << " tasks for developers are available \n";
     }
 };
 
@@ -117,7 +125,11 @@ public:
         Experience = experience;
     }
     void TeachLesson() {
-        std::cout << getName() << " teaching the " << Subject << " for " << Experience << " years \n";
+        std::cout << getName() << " is teaching the " << Subject << " for " << Experience << " years \n";
+    }
+
+    void Work() {
+        std::cout << getName() << " tasks for teachers are available \n";
     }
 };
 
@@ -151,6 +163,17 @@ int main() {
     em2.EmployeePromotion();
     dev1.EmployeePromotion();
     tech1.EmployeePromotion();
+
+//    em1.Work();
+//    dev1.Work();
+//    tech1.Work();
+
+Employee * e1 = &dev1;
+Employee * e2 = &tech1;
+
+em1.Work();
+e1->Work();
+e2->Work();
 
     return 0;
 }
